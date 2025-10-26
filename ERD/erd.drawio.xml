@@ -1,1 +1,68 @@
+#FILE PROMPT
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net">
+  <diagram name="AirBnB ERD">
+    <mxGraphModel dx="1170" dy="658" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- users entity -->
+        <mxCell id="users" value="users&#xa;PK: user_id&#xa;first_name&#xa;last_name&#xa;email&#xa;password_hash&#xa;phone_number&#xa;role&#xa;created_at" style="shape=swimlane;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="180" height="200" as="geometry"/>
+        </mxCell>
+        
+        <!-- properties entity -->
+        <mxCell id="properties" value="properties&#xa;PK: property_id&#xa;FK: host_id&#xa;name&#xa;description&#xa;location&#xa;price_per_night&#xa;created_at&#xa;updated_at" style="shape=swimlane;" vertex="1" parent="1">
+          <mxGeometry x="300" y="40" width="180" height="200" as="geometry"/>
+        </mxCell>
+        
+        <!-- bookings entity -->
+        <mxCell id="bookings" value="bookings&#xa;PK: booking_id&#xa;FK: property_id&#xa;FK: user_id&#xa;start_date&#xa;end_date&#xa;status&#xa;created_at" style="shape=swimlane;" vertex="1" parent="1">
+          <mxGeometry x="560" y="40" width="180" height="180" as="geometry"/>
+        </mxCell>
+        
+        <!-- payments entity -->
+        <mxCell id="payments" value="payments&#xa;PK: payment_id&#xa;FK: booking_id&#xa;amount&#xa;payment_date&#xa;payment_method" style="shape=swimlane;" vertex="1" parent="1">
+          <mxGeometry x="300" y="300" width="180" height="140" as="geometry"/>
+        </mxCell>
+        
+        <!-- reviews entity -->
+        <mxCell id="reviews" value="reviews&#xa;PK: review_id&#xa;FK: property_id&#xa;FK: user_id&#xa;rating&#xa;comment&#xa;created_at" style="shape=swimlane;" vertex="1" parent="1">
+          <mxGeometry x="560" y="300" width="180" height="160" as="geometry"/>
+        </mxCell>
+        
+        <!-- messages entity -->
+        <mxCell id="messages" value="messages&#xa;PK: message_id&#xa;FK: sender_id&#xa;FK: recipient_id&#xa;message_body&#xa;sent_at" style="shape=swimlane;" vertex="1" parent="1">
+          <mxGeometry x="40" y="300" width="180" height="160" as="geometry"/>
+        </mxCell>
+
+        <!-- Example relationships (connectors) -->
+        <mxCell id="u_p" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;" edge="1" parent="1" source="users" target="properties">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="p_b" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;" edge="1" parent="1" source="properties" target="bookings">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_b" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;" edge="1" parent="1" source="users" target="bookings">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_pay" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;" edge="1" parent="1" source="bookings" target="payments">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="p_rev" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;" edge="1" parent="1" source="properties" target="reviews">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_rev" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;" edge="1" parent="1" source="users" target="reviews">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="u_msg" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;" edge="1" parent="1" source="users" target="messages">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
 
