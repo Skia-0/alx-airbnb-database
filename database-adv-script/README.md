@@ -29,3 +29,24 @@ Practice advanced SQL JOINs for the AirBnB database.
 ### Notes
 - These queries depend on the `reviews`, `properties`, `users`, and `bookings` tables.
 - Works in PostgreSQL and MySQL with minimal syntax adjustments.
+
+
+
+
+# database-adv-script
+
+## Purpose
+Aggregation and window-function practice for the AirBnB database.
+
+## Files
+- `aggregations_and_window_functions.sql` — contains:
+  1. A grouped aggregation query to compute the total bookings per user (uses COUNT and GROUP BY).
+  2. A CTE + window-function query that ranks properties by their number of bookings using ROW_NUMBER(), RANK(), and DENSE_RANK().
+
+## How to run (PostgreSQL)
+1. Ensure your schema is loaded and tables exist: `users`, `properties`, `bookings`.
+2. Open psql or your SQL client connected to the DB.
+3. Execute:
+   ```sql
+   \i path/to/database-adv-script/aggregations_and_window_functions.sql
+
