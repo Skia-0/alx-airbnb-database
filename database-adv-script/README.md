@@ -15,3 +15,17 @@ Practice advanced SQL JOINs for the AirBnB database.
 3. Execute the file or paste the queries manually:
    ```sql
    \i path/to/database-adv-script/joins_queries.sql
+
+
+
+
+## Subqueries Practice
+
+### Files
+- `subqueries.sql` — contains two types of subqueries:
+  1. **Non-correlated subquery:** Finds properties with an average rating greater than 4.0.
+  2. **Correlated subquery:** Finds users who have made more than 3 bookings.
+
+### Notes
+- These queries depend on the `reviews`, `properties`, `users`, and `bookings` tables.
+- Works in PostgreSQL and MySQL with minimal syntax adjustments.
