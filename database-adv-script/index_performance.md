@@ -1,21 +1,20 @@
-# Index performance measurement
+# Index performance measurement (full sheet)
 
-## Objective
-Measure query performance **before** and **after** adding indexes using `EXPLAIN`/`EXPLAIN ANALYZE` and record the results.
-
----
-
-## Files
-- `database_index.sql` — index creation script (idempotent).
-- This file (`index_performance.md`) — measurement instructions and result template.
+## Purpose
+Measure query performance **before** and **after** creating indexes using `EXPLAIN ANALYZE` (Postgres) or equivalent. Paste the **exact** EXPLAIN outputs in the slots below.
 
 ---
 
-## Measurement workflow (exact commands)
+# STEP A — Baseline (BEFORE)
 
-### 1) Pick the queries you want to measure
-Example queries (copy & paste to run):
+1. Connect to your DB (psql for Postgres). Run the baseline EXPLAIN for each query exactly as shown.
 
-**Q1 — Bookings by user**
+**Command to run for Query 1 (bookings by date range):**
 ```sql
-SELECT * FROM bookings WHERE user_id = '<SOME_USER_UUID>';
+EXPLAIN (ANALYZE, BUFFERS, VERBOSE)
+SELECT b.booking_id, b.start_date, p.property_id, p.name
+FROM bookings b
+JOIN properties p ON p.property_id = b.property_id
+WHERE b.start_date BETWEEN '2025-06-01' AND '2025-06-30'
+ORDER BY b.created_at DESC
+LIMIT 100;
