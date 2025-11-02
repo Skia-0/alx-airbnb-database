@@ -1,6 +1,6 @@
 -- database_index.sql
--- Idempotent index creation for users, bookings, properties (PostgreSQL / adjust for MySQL)
--- Run this AFTER capturing BEFORE measurements.
+-- Idempotent index creation for users, bookings, properties
+-- Run after capturing BEFORE measurements.
 
 -- USERS
 CREATE INDEX IF NOT EXISTS idx_users_email_lower ON users (lower(email));
@@ -19,6 +19,6 @@ CREATE INDEX IF NOT EXISTS idx_properties_host_id ON properties (host_id);
 CREATE INDEX IF NOT EXISTS idx_properties_location ON properties (location);
 CREATE INDEX IF NOT EXISTS idx_properties_price ON properties (price_per_night);
 
--- Full-text search (Postgres example). Uncomment if your DB supports it and you want FTS:
--- CREATE EXTENSION IF NOT EXISTS pg_trgm;
--- CREATE INDEX IF NOT EXISTS idx_properties_search_tsv ON properties USING GIN (to_tsvector('english', coalesce(name,'') || ' ' || coalesce(description,'')));
+-- Note:
+-- If using MySQL, remove lower() index or adapt accordingly:
+-- CREATE INDEX idx_users_email ON users (email);
